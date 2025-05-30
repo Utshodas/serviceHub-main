@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <style>
+        body {
+            background-color: #fef2f2;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .error-box {
+            background-color: #fff0f0;
+            border: 2px solid #ff6b6b;
+            padding: 20px 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.1);
+        }
+        .error-box h2 {
+            color: #c0392b;
+        }
+        .error-box p {
+            margin-top: 10px;
+            color: #b03a2e;
+        }
+        .error-box a {
+            margin-top: 15px;
+            display: inline-block;
+            text-decoration: none;
+            color: #fff;
+            background-color: #e74c3c;
+            padding: 8px 16px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-box">
+        <h2>Error Occurred</h2>
+        <p><%= error %></p>
+        <a href="/">Back to Home</a>
+    </div>
+</body>
+</html>

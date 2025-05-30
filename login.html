@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ServiceHub</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #0077b6;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            width: 300px;
+        }
+
+        label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        select,
+        input[type="password"],
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        input[type="submit"],
+        input[type="button"],
+        .button {
+            background-color: #0077b6;
+            color: white;
+            padding: 12px 24px;
+            font-size: 14px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover,
+        input[type="button"]:hover,
+        .button:hover {
+            background-color: #005f8a;
+        }
+        .secondary-button {
+    background-color: #e0e0e0;
+    color: #333;
+    padding: 10px 20px;
+    font-size: 13px;
+    margin-left: 10px;
+    }
+
+    .secondary-button:hover {
+    background-color: #d5d5d5;
+    }
+    </style>
+</head>
+<body>
+
+<h1>ServiceHub</h1>
+
+<form action="" method="post">
+    <label for="userType">Select User Type:</label>
+    <select id="userType" name="userType">
+        <option value="provider">Provider</option>
+        <option value="client">Client</option>
+    </select>
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password">
+
+    <input type="submit" value="Log In">
+    <a href="/register" class="button secondary-button">Sign Up</a>
+
+</form>
+
+</body>
+</html>

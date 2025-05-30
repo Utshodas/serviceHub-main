@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 6px;
+        }
+
+        form {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 6px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 12px;
+        }
+
+        input[type="submit"] {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f2f2f2;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f5f5f5;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        /* Style for the "Request" link */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .no-data {
+            text-align: center;
+            font-style: italic;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <form action="/search" method="get">
+        <input type="hidden" name="c_id" value="<%= c_id %>">
+        <input type="text" id="service" name="service" placeholder="Search Service">
+        <input type="text" id="name" name="name" placeholder="Name">
+        <input type="submit" value="Search">
+    </form>
+    
+    
+    
+
+    <h2>User Table</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Service</th>
+                <th>City</th>
+                <th>Country</th>
+                <th>Request</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if(provider.length > 0) { %>
+                <% for(var i = 0; i < provider.length; i++) { %>
+                <tr>
+                    <td><%- provider[i].p_name %></td>
+                    <td><%- provider[i].service %></td>
+                    <td><%- provider[i].city %></td>
+                    <td><%- provider[i].country %></td>
+                    <td>
+                        <a href="/request-service?service=<%= encodeURIComponent(provider[i].service) %>&p_id=<%= provider[i].p_id %>&c_id=<%= c_id %>">Request</a>
+                    </td>
+                </tr>
+                <% } %>
+            <% } else { %>
+                <tr>
+                    <td colspan="5" class="no-data">Data not found</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

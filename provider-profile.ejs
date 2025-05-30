@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Provider Profile</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 36px;
+            color: #0077b6;
+            font-weight: 600;
+        }
+
+        .container {
+            background-color: white;
+            max-width: 800px;
+            width: 100%;
+            padding: 30px 40px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+        }
+
+        .provider-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .info-heading {
+            font-size: 24px;
+            font-weight: 600;
+            color: #0077b6;
+        }
+
+        .edit-button {
+            background-color: #0077b6;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 14px;
+        }
+
+        .edit-button a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .edit-button:hover {
+            background-color: #005f8a;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 12px;
+            color: #444;
+        }
+
+        h2 {
+            font-size: 22px;
+            color: #0077b6;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .view-bookings-button,
+        .view-accepted-bookings-button {
+            background-color: #0077b6;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            margin-right: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .view-bookings-button:hover,
+        .view-accepted-bookings-button:hover {
+            background-color: #005f8a;
+        }
+
+        .view-bookings-button a,
+        .view-accepted-bookings-button a {
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Your Provider Profile</h1>
+    </header>
+
+    <div class="container">
+        <div class="provider-info">
+            <h2 class="info-heading">Provider Information</h2>
+            <button class="edit-button"><a href="/update-provider?id=<%- provider[0].p_id %>">Edit</a></button>
+        </div>
+
+        <p><strong>Name:</strong> <%= provider[0].p_name %></p>
+        <p><strong>Address:</strong> <%= provider[0].house_no %> <%= provider[0].street %>, <%= provider[0].city %>, <%= provider[0].country %></p>
+
+        <h2>Your Bookings</h2>
+        <button class="view-bookings-button"><a href="/view-booking?p_id=<%-provider[0].p_id %>">View Requested Bookings</a></button>
+        <button class="view-accepted-bookings-button"><a href="/view-accepted-booking?p_id=<%- provider[0].p_id %>">View Accepted Bookings</a></button>
+    </div>
+</body>
+</html>

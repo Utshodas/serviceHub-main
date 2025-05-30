@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Table</title>
+    <style>
+        /* Reset and base */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            padding: 40px 20px;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        h2 {
+            max-width: 900px;
+            margin: 0 auto 25px auto;
+            color: #0077b6;
+            font-weight: 600;
+            font-size: 28px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px 40px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            border-radius: 16px;
+            position: relative;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 12px;
+        }
+
+        thead th {
+            background-color: #eef3f8;
+            padding: 14px 20px;
+            text-align: left;
+            font-size: 16px;
+            font-weight: 600;
+            color: #555;
+            border-radius: 8px;
+        }
+
+        tbody td {
+            background-color: #ffffff;
+            padding: 14px 20px;
+            font-size: 15px;
+            color: #444;
+            border-radius: 8px;
+            vertical-align: middle;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+        }
+
+        tbody tr {
+            transition: background-color 0.2s ease;
+        }
+
+        tbody tr:hover td {
+            background-color: #eaf4fc;
+        }
+
+        a.action-link {
+            color: #0077b6;
+            text-decoration: none;
+            margin-right: 12px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        a.action-link:hover {
+            color: #005f8a;
+            text-decoration: underline;
+        }
+
+        .logout-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #0077b6;
+            padding: 10px 18px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 9999;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-btn a {
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .logout-btn:hover {
+            background-color: #005f8a;
+        }
+    </style>
+</head>
+<body>
+
+<% if (req.session.userType == 'client') { %>
+    <div class="logout-btn">
+        <a href="/logout">Logout</a>
+    </div>
+
+    <div class="container">
+        <h2>User Table</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>House</th>
+                    <th>Street</th>
+                    <th>City</th>
+                    <th>Country</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (var i = 0; i < client.length; i++) { %>
+                <tr>
+                    <td><%- client[i].c_id %></td>
+                    <td><%- client[i].c_name %></td>
+                    <td><%- client[i].house %></td>
+                    <td><%- client[i].street %></td>
+                    <td><%- client[i].city %></td>
+                    <td><%- client[i].country %></td>
+                    <td>
+                        <a class="action-link" href="/delete-client?id=<%- client[i].c_id %>">Delete</a>
+                        <a class="action-link" href="/update-client?id=<%- client[i].c_id %>">Update</a>
+                    </td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+<% } else { %>
+    <script>
+        window.location.href = '/register'; // Redirect to the registration page
+    </script>
+<% } %>
+
+</body>
+</html>

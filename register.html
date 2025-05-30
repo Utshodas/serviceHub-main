@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Client Register</title>
+    <style>
+        /* Reset and base */
+        * {
+            box-sizing: border-box;
+            margin: 0; padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+            padding: 20px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+            width: 420px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #0077b6;
+            font-weight: 700;
+            font-size: 28px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #444;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 20px;
+            border: 1.5px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus,
+        input[type="number"]:focus,
+        select:focus {
+            border-color: #0077b6;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #0077b6;
+            color: white;
+            padding: 12px 0;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #005f8a;
+        }
+    </style>
+</head>
+<body>
+
+<form action="" method="post">
+    <h1>Register</h1>
+
+    <label for="userType">Select User Type:</label>
+    <select id="userType" name="userType" required>
+        <option value="provider">Provider</option>
+        <option value="client">Client</option>
+    </select>
+    
+    <label for="id">ID:</label>
+    <input type="number" id="id" min="0" name="id" step="1" required>
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="house">House:</label>
+    <input type="text" id="house" name="house" required>
+
+    <label for="street">Street:</label>
+    <input type="text" id="street" name="street" required>
+
+    <label for="city">City:</label>
+    <input type="text" id="city" name="city" required>
+
+    <label for="country">Country:</label>
+    <input type="text" id="country" name="country" required>
+
+    <label for="service" id="serviceLabel">Service:</label>
+    <input type="text" id="service" name="service">
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" minlength="5" maxlength="10" name="password" required>
+
+    <input type="submit" value="Submit">
+</form>
+
+<script>
+    const userTypeSelect = document.getElementById("userType");
+    const serviceLabel = document.getElementById("serviceLabel");
+    const serviceInput = document.getElementById("service");
+
+    function toggleServiceField() {
+        if (userTypeSelect.value === "client") {
+            serviceLabel.style.display = "none";
+            serviceInput.style.display = "none";
+            serviceInput.value = "";
+        } else {
+            serviceLabel.style.display = "block";
+            serviceInput.style.display = "block";
+        }
+    }
+
+    userTypeSelect.addEventListener("change", toggleServiceField);
+
+    // Initialize on page load
+    toggleServiceField();
+</script>
+
+</body>
+</html>

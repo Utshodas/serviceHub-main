@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Provider Table</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: #3498db; /* theme blue */
+            font-weight: 600;
+        }
+
+        .logout-btn {
+            align-self: flex-end;
+            margin-bottom: 20px;
+            margin-right: 30px;
+        }
+
+        .logout-btn a {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-btn a:hover {
+            background-color: #2980b9;
+        }
+
+        table {
+            background-color: #ffffff;
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 1000px;
+            box-shadow: 0 0 15px rgba(52, 152, 219, 0.15);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 15px 12px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 15px;
+        }
+
+        th {
+            background-color: #eaf4fb;
+            font-weight: 700;
+            color: #3498db;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9fbfd;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 12px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="logout-btn">
+        <a href="/logout">Logout</a>
+    </div>
+
+    <h1>Provider Table</h1>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>House</th>
+            <th>Street</th>
+            <th>City</th>
+            <th>Country</th>
+            <th>Service</th>
+            <th>Action</th>
+        </tr>
+        <% for(var i=0; i<provider.length; i++){ %>
+        <tr>
+            <td><%- provider[i].p_id %></td>
+            <td><%- provider[i].p_name %></td>
+            <td><%- provider[i].house %></td>
+            <td><%- provider[i].street %></td>
+            <td><%- provider[i].city %></td>
+            <td><%- provider[i].country %></td>
+            <td><%- provider[i].service %></td>
+            <td>
+                <a href="/delete-provider?id=<%- provider[i].p_id %>">Delete</a>
+                <a href="/update-provider?id=<%- provider[i].p_id %>">Update</a>
+            </td>
+        </tr>
+        <% } %>
+    </table>
+
+</body>
+</html>

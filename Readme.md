@@ -154,8 +154,8 @@
 ## Some Screenshots
 ![Login Pictures](./login.png)
 ![Signup Pictures](./signup.png)
-![profile Pictures](./profile.png)
-![Search Pictures](./search.png)
+![profile Pictures](./Profile.png)
+![Search Pictures](./Search.png)
 
 
 ---
